@@ -1,0 +1,75 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bysj?characterEncoding=utf-8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    # Druid StatViewServlet配置
+    druid:
+      stat-view-servlet:
+        # 默认true 内置监控页面首页/druid/index.html
+        enabled: true
+        url-pattern: /druid/*
+        # 允许清空统计数据
+        reset-enable: true
+        login-username: root
+        login-password: 123
+        # IP白名单 多个逗号分隔
+        allow:
+        # IP黑名单
+        deny:
+      #初始化时建立物理连接的个数
+      initial-size: 5
+      #最小连接池数量
+      min-idle: 5
+      #最大连接池数量 maxIdle已经不再使用
+      max-active: 20
+      #获取连接时最大等待时间，单位毫秒
+      max-wait: 60000
+      #申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      #既作为检测的间隔时间又作为testWhileIdel执行的依据
+      time-between-eviction-runs-millis: 60000
+      #销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接
+      min-evictable-idle-time-millis: 30000
+      #用来检测连接是否有效的sql 必须是一个查询语句
+      #mysql中为 select 'x'
+      #oracle中为 select 1 from dual
+      validation-query: select 'x'
+      #申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-borrow: false
+      #归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-return: false
+      #是否缓存preparedStatement,mysql5.5+建议开启
+      pool-prepared-statements: true
+      #当值大于0时poolPreparedStatements会自动修改为true
+      max-pool-prepared-statement-per-connection-size: 20
+      #配置扩展插件
+      filters: stat,wall
+      #合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+
+  jpa:
+    database: MYSQL
+#    show-sql: true
+#    open-in-view: true
+  redis:
+    host: 127.0.0.1
+    password: Bro@)!*)#)%2018QWOP^
+    # 数据库索引 默认0
+    database: 0
+    # centos上修改了端口
+    port: 6379
+server:
+  port: 8081
+  servlet:
+    context-path: /wenli
+#security:
+#  basic:
+#    enabled: false
+
+
+# 日志
+logging:
+  file: wenli-logs/wenli.log

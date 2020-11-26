@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bysj
+    username: root
+    password: 123456
+  jpa:
+    database: MYSQL
+    show-sql: true
+#  redis:
+#    host: 127.0.0.1
+#    password: 123
+#    # 数据库索引 默认0
+#    database: 0
+#    port: 6379
+#server:
+#  port: 8081
+#  context-path: /wenli
+#security:
+#  basic:
+#    enabled: false
+
